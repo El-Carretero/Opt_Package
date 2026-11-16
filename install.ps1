@@ -172,7 +172,9 @@ foreach ($package in $selected) {
             $ErrorActionPreference = 'Continue'
             $childArguments = @('-NoLogo','-NoProfile','-ExecutionPolicy','Bypass','-File',$installer)
             if ($InstallPrerequisites -and $name -eq 'NPAmp') { $childArguments += '-InstallPrerequisites' }
-            & powershell.exe @childArguments *>&1 | Tee-Object -FilePath $projectLog
+            & powershell.exe @childArguments *>&1 | ForEach-Object {
+                if ($_ -is [System.Management.Automation.ErrorRecord]) { $_.Exception.Message } else { $_ }
+            } | Tee-Object -FilePath $projectLog
             $installExit = $LASTEXITCODE
         } finally { $ErrorActionPreference = $previousErrorAction }
         if ($installExit -ne 0) { throw "Installer exited with code $installExit. See $projectLog" }

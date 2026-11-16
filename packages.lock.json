@@ -66,7 +66,7 @@
                          "sourceBytes":  56851256,
                          "overlay":  "overlays/Optiland",
                          "installer":  "install/install.ps1",
-                         "overlaySha256":  "cee43d74562d049cb086f623937b6a53e948b5f72f73bcc38059389e4a6afbfd"
+                         "overlaySha256":  "23def33c6e13e994a6c3f5180be3b5590a66b859ba40b80da01af975245e0e90"
                      },
                      {
                          "name":  "RayOptics",
@@ -79,7 +79,7 @@
                          "sourceBytes":  1461553,
                          "overlay":  "overlays/RayOptics",
                          "installer":  "install/install.ps1",
-                         "overlaySha256":  "4a6d100381db78e36a1427b541ae6602db3f799162f3efb2c21fe84ef5afa43a"
+                         "overlaySha256":  "f4ba5b2a48037a3f3221ff22d1c9a7993c702080fbbd7b9f59e88298669bbfc9"
                      },
                      {
                          "name":  "LightPipes",
@@ -92,7 +92,7 @@
                          "sourceBytes":  133694388,
                          "overlay":  "overlays/LightPipes",
                          "installer":  "install/install.ps1",
-                         "overlaySha256":  "4b05ea43cd101993172c8029a8f932b71eb55f43d3d611b8623a0e54eca55e2a"
+                         "overlaySha256":  "00f2c986ab8e6263d5ad3105e4a374c289891ff6b58d2c2e906ab7ab223a09c6"
                      },
                      {
                          "name":  "Diffractio",
@@ -105,7 +105,7 @@
                          "sourceBytes":  74425677,
                          "overlay":  "overlays/Diffractio",
                          "installer":  "install/install.ps1",
-                         "overlaySha256":  "156083f14de5f792658f3e3e3f1a78bc8b47dbae28340b9429d6e2842ac35765"
+                         "overlaySha256":  "169fd82f38d28e51786dbf5a012ba633e9b84a3945887412133d58f395dfb38c"
                      },
                      {
                          "name":  "TorchOptics",
@@ -118,7 +118,7 @@
                          "sourceBytes":  11214589,
                          "overlay":  "overlays/TorchOptics",
                          "installer":  "install/install.ps1",
-                         "overlaySha256":  "785ab058071790d829fe5f4318343e3a3236139534055578bb0699236b677bfb"
+                         "overlaySha256":  "46e45c6a8335e616b18db7dd3b8d9b85050bf1f94c45b6b652c10def96b2464a"
                      },
                      {
                          "name":  "NPAmp",
@@ -170,7 +170,7 @@
                          "sourceBytes":  3734626,
                          "overlay":  "overlays/pychi",
                          "installer":  "install/install.ps1",
-                         "overlaySha256":  "b7f51689c6ab1d95126679d9a5ff2fb26c06552a41d24afec538b13a0519ceae"
+                         "overlaySha256":  "e0edee69f9a791a6d302246cef13815a2fc086cf016aa94f93c3037c0f095ef0"
                      },
                      {
                          "name":  "PyNLO",
@@ -238,5 +238,5 @@
                          "overlaySha256":  "a9a33bff072641cb2f6b226c9fb5dc6e11765cf46a367c3e6ba739859bb29b69"
                      }
                  ],
-    "setupSha256":  "7810fc44354cda5ca9a66bf4457bb7a8224950a0915ee91cc997c01ab3f4be5e"
+    "setupSha256":  "24a79994b0be800f310af919a00374f5f4214258823490b1a8fda08ca642733b"
 }

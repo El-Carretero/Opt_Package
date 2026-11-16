@@ -17,6 +17,7 @@
 | NPAmp | 새 경로에 공식 실행 패키지를 다운로드·추출하고 실제 증폭 계산 통과. 기존 OS의 VC90 Runtime을 사용했으며 관리자 재배포기 설치 분기는 실행하지 않음 |
 | reZonator 새 빌드 준비 | 빈 경로에서 소스·submodule 두 개·Python SDK·고정 pip 패키지·Qt 6.9.3·MinGW 13.1.0을 취득/검증. Lua 정적 라이브러리 빌드와 CMake configure/generate 통과. 이번에는 전체 C++ 재컴파일을 반복하지 않음 |
 | Git 없는 Python 소스 배포 | Optiland 0.6.3+local, RayOptics 0.9.10, TorchOptics 1.0.2의 archive + overlay wheel build 성공. Git 메타데이터 없이 정확한 버전 산출 |
+| 공개 GitHub 설치 경로 | 공개 `main/bootstrap.ps1`을 실제 내려받아 새 `PackageDirectory`와 `Destination`에 PyNLO 설치 완료. 저장소 다운로드 → 원본 소스/런타임 취득 → 고정 패키지 설치 → 계산 검증 → 완료 상태 기록까지 종료 코드 0 |
 
 생성 로그에는 새 PC의 설치 경로 등이 들어가므로 공개 저장소에 복제하지 않는다. 실제 설치 시 해당 PC의 `.opt-package/logs`와 도구별 `install` 로그에 다시 기록된다.
 

@@ -23,6 +23,7 @@ $parent=Split-Path $packagePath -Parent
 New-Item -ItemType Directory -Force -Path $parent | Out-Null
 $work=Join-Path $parent ('.Opt_Package-bootstrap-'+[guid]::NewGuid().ToString('N'))
 New-Item -ItemType Directory -Path $work | Out-Null
+(Get-Item -LiteralPath $work -Force).Attributes = (Get-Item -LiteralPath $work -Force).Attributes -bor [IO.FileAttributes]::Hidden
 $archive=Join-Path $work 'package.zip'
 $previousProgress=$ProgressPreference; $ProgressPreference='SilentlyContinue'
 try {
@@ -44,6 +45,9 @@ try {
     if (!([IO.Path]::GetFullPath($unpacked)).StartsWith($workPrefix,[StringComparison]::OrdinalIgnoreCase) -or [IO.Path]::GetDirectoryName($packagePath) -ne [IO.Path]::GetFullPath($parent)) { throw 'Unsafe package destination.' }
     Move-Item -LiteralPath $unpacked -Destination $packagePath
     [IO.File]::WriteAllText((Join-Path $packagePath '.downloaded-commit'),$commit)
+    # Only our temporary archive and now-empty staging directory are removed.
+    Remove-Item -LiteralPath $archive -Force
+    Remove-Item -LiteralPath $work -Force
 } finally { $ProgressPreference=$previousProgress }
 $installArgs=@{Destination=$Destination;Projects=$Projects;WslDistro=$WslDistro;Plan=$Plan;PrepareOnly=$PrepareOnly;SkipWSL=$SkipWSL;Reinstall=$Reinstall;InstallPrerequisites=$InstallPrerequisites}
 Write-Host "Downloaded Opt_Package commit $commit to $packagePath"
