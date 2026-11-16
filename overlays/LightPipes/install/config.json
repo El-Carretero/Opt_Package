@@ -1,0 +1,13 @@
+{
+  "name": "LightPipes",
+  "repo": "opticspy/lightpipes",
+  "package": "LightPipes",
+  "version": "2.1.5",
+  "mode": "source",
+  "extras": "",
+  "advantages": "Gaussian 빔, 개구, 회절, FFT·Fresnel 전파를 Python에서 간결하게 조합한다.",
+  "limits": "기본적으로 scalar 파동광학 모델이다. 펄스 시간 동역학, 포화증폭과 반전분포는 추가 모델이 필요하다.",
+  "uses": "빔 전달, 회절 손실, 개구와 열파면이 공간 빔에 미치는 영향 계산.",
+  "python": "3.12.12",
+  "source_commit": "cd965c9469bb53bbae2bf185d38c1107408cd5b5"
+}

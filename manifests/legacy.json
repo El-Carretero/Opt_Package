@@ -1,0 +1,62 @@
+[
+  {
+    "name": "modelock_sim",
+    "repo": "YossiLev/modelock_sim",
+    "commit": "e97d1075eb60be6e85f6b2e3e71b8fdab594894a",
+    "version": "git-e97d1075eb60",
+    "platform": "windows",
+    "installer": "install/install.ps1",
+    "sourceSha256": "10b356b4eb6d319dac3445048437eef0859208f1020b12a1ac57dbedb16f9c56",
+    "overlay": "overlays/modelock_sim"
+  },
+  {
+    "name": "KLM-Sim",
+    "repo": "leonbello/kerr-lens-simulation",
+    "commit": "0b63c77b5e12551abec3c2706410fc1a7921383c",
+    "version": "git-0b63c77b5e12",
+    "platform": "windows",
+    "installer": "install/install.ps1",
+    "sourceSha256": "72717b01bd63c89c01caf56b75a5d9348321504b868ec1c5b28ce2be26510984",
+    "overlay": "overlays/KLM-Sim"
+  },
+  {
+    "name": "NPAmp",
+    "repo": "vsemionov/npamp",
+    "commit": "b1eb07c7fe8204f4e316a26b56b12caa9b54d0b2",
+    "version": "1.2.18",
+    "platform": "windows",
+    "installer": "install/install.ps1",
+    "sourceSha256": "8b7193e200a839a6ac662925588c0a9f40a58a7731a05cadb8f8c77f894a23b5",
+    "overlay": "overlays/NPAmp"
+  },
+  {
+    "name": "PyNLO",
+    "repo": "pyNLO/PyNLO",
+    "commit": "9a1a9ec9c3cccd858543ac984ac8895285d286c0",
+    "version": "0.1.2",
+    "platform": "windows",
+    "installer": "install/install.ps1",
+    "sourceSha256": "c77220fea733b2ea8452bbf21945cde89e4b97d0b5e82572c87503971aab0ff6",
+    "overlay": "overlays/PyNLO"
+  },
+  {
+    "name": "pyLaserPulse",
+    "repo": "jsfeehan/pyLaserPulse",
+    "commit": "9397befa6e04f92c111ad7a5ee7e4efe502dc128",
+    "version": "0.1.0",
+    "platform": "windows",
+    "installer": "install/install.ps1",
+    "sourceSha256": "295037451c15223f5124f8738f7fa2179255af0c744aa4dfe8fd103965866b06",
+    "overlay": "overlays/pyLaserPulse"
+  },
+  {
+    "name": "PyFiberAmp",
+    "repo": "Jomiri/pyfiberamp",
+    "commit": "dbc1bad247d698ea7931c84c85fd89cf67286de7",
+    "version": "0.5.0",
+    "platform": "windows",
+    "installer": "install/install.ps1",
+    "sourceSha256": "30fbd214a1261c4401fabe470164daad5bed057c52895ef2f9c5c5a021d6dff9",
+    "overlay": "overlays/PyFiberAmp"
+  }
+]

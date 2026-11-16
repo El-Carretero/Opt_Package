@@ -1,0 +1,13 @@
+{
+  "name": "TorchOptics",
+  "repo": "MatthewFilipovich/torchoptics",
+  "package": "torchoptics",
+  "version": "1.0.2",
+  "mode": "source",
+  "extras": "",
+  "advantages": "PyTorch 기반 GPU 파동광학, 자동미분과 광학소자 최적화를 지원한다.",
+  "limits": "자동미분은 사용한 물리 모델의 정확성을 보장하지 않는다. 사용 가능한 GPU 메모리 범위에서 격자 크기·batch를 조절해야 한다. CUDA 실행은 호환 NVIDIA GPU/드라이버가 필요하며 GPU가 없으면 CPU로 사용할 수 있다.",
+  "uses": "파면·위상 마스크·정렬과 회절광학소자 최적화.",
+  "python": "3.12.12",
+  "source_commit": "34fe9c40f874e53db225e703c5580befe8c523b5"
+}

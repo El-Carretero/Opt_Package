@@ -1,0 +1,20 @@
+[
+  {
+    "id": "uv",
+    "file": "downloads/uv-0.11.6.zip",
+    "url": "https://github.com/astral-sh/uv/releases/download/0.11.6/uv-x86_64-pc-windows-msvc.zip",
+    "sha256": "99aa60edd017a256dbf378f372d1cff3292dbc6696e0ea01716d9158d773ab77"
+  },
+  {
+    "id": "python",
+    "file": "downloads/cpython-3.11.15-20260408.tar.gz",
+    "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20260408/cpython-3.11.15%2B20260408-x86_64-pc-windows-msvc-install_only_stripped.tar.gz",
+    "sha256": "79ac95ececf832e6e859556d83f7d0fb7d253974cc98062893f7134a4d956b5f"
+  },
+  {
+    "id": "w64devkit",
+    "file": "downloads/w64devkit-x64-2.11.0.7z.exe",
+    "url": "https://github.com/skeeto/w64devkit/releases/download/v2.11.0/w64devkit-x64-2.11.0.7z.exe",
+    "sha256": "54c2bb9962e8a30c8270e34c5efc3d5fee579f53087fa7d435b95fbba2af7b2b"
+  }
+]

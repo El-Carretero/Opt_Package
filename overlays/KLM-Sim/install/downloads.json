@@ -1,0 +1,14 @@
+[
+  {
+    "id": "octave",
+    "file": "downloads/octave-11.3.0-w64.7z",
+    "url": "https://ftpmirror.gnu.org/octave/windows/octave-11.3.0-w64.7z",
+    "sha256": "fd3cf0e885467a15211b8ceded42800432a5462481324d49a896ef257e05d1a0"
+  },
+  {
+    "id": "7zr",
+    "file": "tools/7zr.exe",
+    "url": "https://github.com/ip7z/7zip/releases/download/26.06/7zr.exe",
+    "sha256": "e80db2dad715a6c5adabe292d31ed54e11f4e9b99ca349827b50573b175891bc"
+  }
+]

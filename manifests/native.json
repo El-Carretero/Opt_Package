@@ -1,0 +1,62 @@
+[
+  {
+    "name": "OPOSSUM",
+    "repo": "opossum-labs/opossum",
+    "commit": "565a9e66663fe650607b31c4dfed093657b809ce",
+    "version": "0.8.1; Graphviz 14.1.5",
+    "platform": "windows",
+    "installer": "install/install.ps1",
+    "sourceSha256": "a03e90343cde66ae9d79be297461ddb6bb18f00c10067f1c07acd42bf88e50a7",
+    "overlay": "overlays/OPOSSUM"
+  },
+  {
+    "name": "reZonator",
+    "repo": "orion-project/rezonator2",
+    "commit": "8eeea944bf6f811a0ec679d294ff5e9d79d6141d",
+    "version": "2.3.0+opt-sim-fix1",
+    "platform": "windows",
+    "installer": "install/install.ps1",
+    "sourceSha256": "37b9bfa3358c26f93a3251f8cd055812cbbc7dfc160eb2c333d51eed6e1514a6",
+    "overlay": "overlays/reZonator"
+  },
+  {
+    "name": "Elmer",
+    "repo": "ElmerCSC/elmerfem",
+    "commit": "11c118114ba44bdcf732d087144dd4d0c3098b4f",
+    "version": "26.2-devel (2026-09-17), Rev11c118114, nompi",
+    "platform": "windows",
+    "installer": "install/install.ps1",
+    "sourceSha256": "21c9e56ace9b8bdca82311849bc78bceb4eb8b770bd304ad0bb7ea0f237b15d5",
+    "overlay": "overlays/Elmer"
+  },
+  {
+    "name": "FEniCSx",
+    "repo": "FEniCS/dolfinx",
+    "commit": "fefdb2201b80a8f59527de2d461b9056906661d8",
+    "version": "DOLFINx runtime0.11.0; source tag v0.11.0.post0; PETSc3.25.6",
+    "platform": "wsl",
+    "installer": "install/install.ps1",
+    "sourceSha256": "32e162a6ce9748c7210d7d53c4c8c03ec7ce5d140a6e5257dacd6c7e581674dd",
+    "overlay": "overlays/FEniCSx"
+  },
+  {
+    "name": "HASEonGPU",
+    "repo": "ComputationalRadiationPhysics/haseongpu",
+    "commit": "f7d7494f96fc9138e2d476021087fc8ff9fe6913",
+    "version": "2.1.1; CUDA12.9; openPMD0.17.1",
+    "platform": "wsl",
+    "installer": "install/install.ps1",
+    "sourceSha256": "b3e1c1c3195887539ad6b15ec0a99874403d7fbd2239caa8334ade11dccfc1a1",
+    "overlay": "overlays/HASEonGPU"
+  },
+  {
+    "name": "Luna.jl",
+    "repo": "LupoLab/Luna.jl",
+    "commit": "7bc2f156feb0df62fdd48c5678cef2ade8fedd94",
+    "version": "0.6.2",
+    "platform": "windows",
+    "installer": "install/install.ps1",
+    "sourceSha256": "ec2d0799f29da959626e9a43123fda6a275ba1624820405c6aa4bd13c81dad6e",
+    "overlay": "overlays/Luna.jl"
+  }
+]

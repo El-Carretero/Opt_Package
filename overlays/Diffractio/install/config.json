@@ -1,0 +1,13 @@
+{
+  "name": "Diffractio",
+  "repo": "optbrea/diffractio",
+  "package": "diffractio",
+  "version": "1.0.0",
+  "mode": "wheel",
+  "extras": "",
+  "advantages": "scalar·vector 회절, 편광, RS/BPM/WPM/CZT 등 여러 전파 계산을 제공한다.",
+  "limits": "능동매질 이득과 반전·시간 펄스 모델은 별도다. 사용자 지정 GitHub fork의 현재 소스와 PyPI 안정판 1.0.0 의존성이 달라 실행 환경은 공식 PyPI 안정판을 설치했다. 소스 폴더는 요청한 fork의 정확한 commit을 보존한다.",
+  "uses": "회절·파면·개구·공간 전파 및 편광 효과 검토.",
+  "python": "3.12.12",
+  "source_commit": "75feb35691f6bdd3b85077e5f1f216fb4ccb85bd"
+}

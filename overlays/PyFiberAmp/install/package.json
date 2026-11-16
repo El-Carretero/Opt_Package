@@ -1,0 +1,7 @@
+{
+  "name": "PyFiberAmp",
+  "commit": "dbc1bad247d698ea7931c84c85fd89cf67286de7",
+  "version": "0.5.0",
+  "python": "3.11.15",
+  "editable": true
+}

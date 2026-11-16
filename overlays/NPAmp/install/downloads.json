@@ -1,0 +1,14 @@
+[
+  {
+    "id": "npamp",
+    "file": "downloads/NPAmp.Setup.1.2.18.exe",
+    "url": "https://github.com/vsemionov/npamp/releases/download/1.2.18/NPAmp.Setup.1.2.18.exe",
+    "sha256": "bb6f1d896e54eae0af211db39ccba6be096e393e4b388ecfbb72591ad04ab458"
+  },
+  {
+    "id": "innoextract",
+    "file": "downloads/innoextract-1.9-windows.zip",
+    "url": "https://constexpr.org/innoextract/files/innoextract-1.9-windows.zip",
+    "sha256": "6989342c9b026a00a72a38f23b62a8e6a22cc5de69805cf47d68ac2fec993065"
+  }
+]

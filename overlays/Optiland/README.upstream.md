@@ -1,0 +1,220 @@
+![Tests](https://github.com/optiland/optiland/actions/workflows/ci.yml/badge.svg?label=Tests)
+[![Docs](https://github.com/optiland/optiland/actions/workflows/docs.yml/badge.svg)](https://www.optiland.org/docs/)
+[![codecov](https://codecov.io/github/optiland/optiland/graph/badge.svg?token=KAOE152K5O)](https://codecov.io/github/optiland/optiland)
+[![Maintainability](https://qlty.sh/gh/optiland/projects/optiland/maintainability.svg)](https://qlty.sh/gh/optiland/projects/optiland)
+![Stars](https://img.shields.io/github/stars/optiland/optiland.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14588961.svg)](https://doi.org/10.5281/zenodo.14588961)
+[![Python Versions](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13%20%7C%203.14%20-blue)](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13%20%7C%203.14%20-blue)
+
+
+<div align="center">
+  <a href="https://www.optiland.org/docs/">
+    <img src="https://github.com/optiland/optiland/raw/master/docs/images/optiland.svg" alt="Optiland">
+  </a>
+</div>
+
+<div align="center">
+    <img src="https://github.com/optiland/optiland/raw/master/docs/images/gui.png" alt="Optiland GUI" style="max-width: 100%; height: auto;">
+</div>
+
+<p align="center"><em>The Optiland GUI showing a reverse telephoto system.</em></p>
+
+
+## Introduction
+
+**Optiland** is an open-source optical design platform built in Python, tailored for both classical lens systems and modern computational optics. It provides a robust and extensible interface for constructing, optimizing and analyzing optical systems, from standard refractive or reflective layouts to advanced freeform assemblies.
+
+Built for professional engineering workflows, Optiland includes full support for tolerancing, high-performance optimization routines, and intelligent material selection through its integrated GlassExpert module. Also, traditional ray-based analysis are complemented by differentiable modeling support through PyTorch.
+
+Whether you're developing prototypes in research or refining production systems, Optiland delivers the flexibility and precision needed to model, simulate, and optimize real-world optical instruments:
+
+- ⚙️ Build refractive and reflective systems using a clean, object-oriented API  
+- 🔍 Trace rays through multi-surface optical assemblies, including aspherics and freeforms
+- 📊 Analyze paraxial properties, wavefront errors, PSFs/MTFs, and scatter behavior 
+- 🧠 Optimize via traditional merit functions or autograd-enabled differentiable backends  
+- 🎨 Visualize interactively in 2D (Matplotlib) and 3D (VTK).
+
+Under the hood, Optiland uses NumPy for fast CPU calculations and PyTorch for GPU acceleration and automatic differentiation. Switch between engines depending on your use case with the same interface.
+
+## Get started in 5 minutes
+
+```bash
+pip install optiland
+```
+
+Copy-paste the following to build a singlet, trace it, and draw it:
+
+```python
+from optiland.optic import Optic
+
+lens = Optic()
+lens.surfaces.add(index=0, thickness=float("inf"))                                     # object
+lens.surfaces.add(index=1, radius=25.0, thickness=6.0, material="N-BK7", is_stop=True)  # front
+lens.surfaces.add(index=2, radius=-75.0, thickness=34.0)                               # back
+lens.surfaces.add(index=3)                                                             # image
+lens.set_aperture(aperture_type="EPD", value=20)
+lens.fields.set_type("angle")
+lens.fields.add(y=0)
+lens.fields.add(y=5)
+lens.wavelengths.add(value=0.587, is_primary=True)
+
+lens.draw()                       # 2D layout with traced rays
+print(lens.paraxial.f2())         # effective focal length -> 37.04 mm
+```
+
+<div align="center">
+  <img src="https://github.com/optiland/optiland/raw/master/docs/images/readme_singlet.png" alt="A singlet drawn by Optiland" style="max-width: 100%; height: auto;">
+</div>
+
+Stuck? `from optiland.diagnostics import check_system; print(check_system(lens))` reports what
+is missing or inconsistent about a system, each finding with a runnable fix.
+
+→ [Start Here](https://www.optiland.org/docs/start_here.html) · [Conventions](https://www.optiland.org/docs/conventions.html) · [How do I …?](https://www.optiland.org/docs/how_do_i.html) · [5-minute quickstart](https://www.optiland.org/docs/quickstart.html) · [Example Gallery](https://www.optiland.org/docs/gallery/introduction.html) · [Full Learning Guide](https://www.optiland.org/docs/learning_guide.html)
+
+
+
+## Installation
+
+- **Core only**
+
+    ```bash
+    pip install optiland
+    ```
+
+- **Core + GUI**
+
+    ```bash
+    pip install optiland[gui]
+    ```
+
+- **With CPU‑only PyTorch**
+
+    ```bash
+    pip install optiland[torch]
+    ```
+
+- **GPU‑enabled PyTorch**
+
+    After installing Optiland, install a CUDA build of PyTorch manually:
+
+    ```bash
+    pip install optiland
+    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
+    ```
+
+⚠️ Important Notes on GPU Installation
+- This command installs PyTorch with CUDA 12.6. Ensure that your NVIDIA drivers and toolkit are compatible.
+- You can find the correct PyTorch + CUDA combo for your system using the [official PyTorch installation selector](https://pytorch.org/get-started/locally/).
+- If you're using a non-NVIDIA GPU or running on Apple Silicon, use the CPU-only installation instead.
+
+
+For more details, see the [installation guide](https://www.optiland.org/docs/installation.html) in the docs.
+
+## Core Capabilities
+
+| Feature       | Capabilities |
+|------------------------|--------------|
+| **🛠️ Design & Modeling** | Configure fields, wavelengths, apertures. Build systems using spherical, aspheric, conic, and freeform surfaces.  |
+| **🧮 Differentiable Core** | Switch between NumPy (CPU) and PyTorch (GPU/autograd) seamlessly for hybrid physics-ML workflows. |
+| **🔬 Ray Tracing** | Trace paraxial and real rays through sequential systems with support for polarization, birefringence, and coatings. |
+| **💡 Non-Sequential (pre-release)** | Differentiable non-sequential ray tracing: illumination, stray-light & ghost analysis, coatings, and absorption, optimizable via `loss.backward()`. |
+| **👻 Multi-Sequence Tracing (beta)** | Trace ghost paths, reverse traces, and sub-component views as ordered sub-sequences over the same surfaces. Geometry and materials stay linked to the base system. |
+| **📊 Optical Analysis** | Generate spot diagrams, wavefront error maps, ray fans, PSF/MTF plots, Zernike decompositions, distortion plots, etc. |
+| **🧠 Optimization** | Local & global optimizers, autograd support, operand-based merit functions, and GlassExpert for categorical variable search. |
+| **📈 Tolerancing** | Monte Carlo and parametric sensitivity analysis to evaluate robustness and manufacturability. |
+| **📚 Material Library** | Integrated access to refractiveindex.info. Support for custom dispersion models and material creation. |
+| **🖼️ Visualization** | 2D plots via matplotlib, 3D interactive scenes with VTK, and debugging tools to inspect ray behavior. |
+| **🧩 Interoperability** | Import/Export Zemax (.zmx), CODE V (.seq), and OSLO (.len) files, save/load systems in JSON, use full Python API for scripting and automation. |
+| **🚀 Performance** | GPU-accelerated ray tracing (150M+ ray-surfaces/s), Numba-optimized NumPy backend, JIT-compiled computations. |
+| **🤖 ML Integration** | Compatible with PyTorch pipelines for deep learning, differentiable modeling, and end-to-end training. |
+
+
+For a full breakdown of Optiland’s functionalities, see the [complete feature list](https://www.optiland.org/docs/functionalities.html).
+
+> [!NOTE]
+> The code itself is in constant flux and new functionalities are always being added.
+
+
+
+## 🗺️ Roadmap
+
+Optiland is continually evolving to provide new functionalities for optical design and analysis. Below are some of the planned features and enhancements we aim to implement in future versions. We welcome contributions in any of these areas:
+
+### Physics & Core Engine
+- [x] **Non-Sequential Ray Tracing** (pre-release) — differentiable illumination, stray-light & ghost analysis, with coatings, required mirror reflectance, Beer–Lambert absorption, and self-diagnosing results. See the [Limitations & Roadmap](https://www.optiland.org/docs/gallery/nonsequential/limitations_and_roadmap.html) page (canonical) for the full capability envelope and these follow-ups:
+  - [ ] Reparameterization for visibility gradients (silhouette/vignetting)
+  - [ ] Optimization-system integration (Variable/operand wiring)
+  - [ ] Path Replay Backpropagation (constant-memory gradients)
+  - [ ] GUI integration
+  - [ ] Volumetric scattering (beyond the Beer–Lambert absorption already implemented)
+  - [ ] Polarization (Stokes through Fresnel)
+  - [ ] Dr.Jit / Mitsuba 3 / OptiX backend
+- [x] **Multi-Sequence Ray Tracing** (beta) - ghost paths, reverse traces, and sub-component views as alternate traversal orders over the same surfaces. Per-sequence first-order analysis, a visualization overlay, and a ghost-enumeration helper are follow-ups.
+- [ ] **Physical Optics Propagation** (Diffraction, beam clipping, Gaussian beam evolution)
+- [ ] **Multi-Path Sequential Ray Tracing** (branching arms / beamsplitters)
+- [ ] **Additional Freeforms** (Superconic, etc.)
+
+### Optimization & Algorithms
+- [ ] **Global Optimization Routines** (Genetic Algorithms, etc.)
+- [ ] **AI-Assisted Starting Points** (Database lookup or ML-based design initialization)
+
+### Engineering & Interoperability
+- [ ] **ISO 10110 Drawing Generator** (Automated fabrication prints)
+- [ ] **CAD Export** (STEP/IGES solid body generation)
+- [ ] **Interferogram Analysis** (Experimental data import and phase unwrapping)
+- [ ] **Cost Estimator** (Glass density & volume pricing heuristics)
+
+### 💡 The "Wildcard"
+- [ ] **Your Idea Here:** Have an idea for a new feature, tool, or analysis? Open an issue and let's discuss it!
+
+
+## 🚧 Get Involved
+
+Optiland is built by the community, for the community. We are actively looking for contributors, whether you are an optical engineer, a Python developer, or a student looking to learn.
+
+**Where to start?**
+We curate issues specifically for new contributors. Click the badges below to find a task:
+
+[![Good First Issues](https://img.shields.io/github/issues/optiland/optiland/good%20first%20issue?color=7057ff&label=Good%20First%20Issues)](https://github.com/optiland/optiland/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)
+*Perfect for your first PR. These are self-contained and well-defined.*
+
+[![Help Wanted](https://img.shields.io/github/issues/optiland/optiland/help%20wanted?color=008672&label=Help%20Wanted)](https://github.com/optiland/optiland/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)
+*Slightly larger tasks where we need your expertise.*
+
+[![Discussion](https://img.shields.io/github/discussions/optiland/optiland?color=0e8a16&label=Join%20the%20Discussion)](https://github.com/optiland/optiland/discussions)
+*Have a feature idea? Want to show off a design? Talk to us here.*
+
+
+## Contributing
+
+We welcome contributions of all kinds - features, bugfixes, docs, and discussions! 🎉
+
+To get started, please check out the [contributing guide](./CONTRIBUTING.md) for best practices and coordination tips.
+
+
+## License
+Distributed under the MIT License. See [LICENSE](https://github.com/optiland/optiland/blob/master/LICENSE) for more information.
+
+
+## Contact and Support
+
+If you **found a bug**, have a **feature request**, or need to report a **documentation issue**, please [open an issue](https://github.com/optiland/optiland/issues).  
+If you have a **question** or would like to start a broader **discussion**, please use the [GitHub Discussions](https://github.com/optiland/optiland/discussions) section.  
+
+This keeps all project-related communication public, searchable, and helpful for others who may encounter the same problems or questions.
+
+Before opening an issue or discussion, please make sure you have:  
+- Checked the [documentation](https://www.optiland.org/docs/) and API reference  
+- Searched existing [issues](https://github.com/optiland/optiland/issues) and [discussions](https://github.com/optiland/optiland/discussions)  
+- Made a reasonable attempt to solve the problem on your own  
+
+Well-prepared reports and questions help maintainers and the community respond more effectively. Very low-effort submissions (for example, asking for direct answers without reviewing available resources) are discouraged.
+
+**Important**: I do not provide support by email.  
+Questions, bug reports, and feature requests sent directly to my inbox will not receive a reply. Please use GitHub Issues or Discussions instead.
+
+Email is reserved for matters that cannot reasonably go through GitHub, such as collaboration proposals, consulting or contract work, or other professional inquiries.
+
+Kramer Harrison – kdanielharrison@gmail.com
+

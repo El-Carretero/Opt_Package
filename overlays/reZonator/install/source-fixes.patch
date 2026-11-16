@@ -1,0 +1,369 @@
+diff --git a/src/core/ElementFormula.cpp b/src/core/ElementFormula.cpp
+index d84a1ad..7aa470e 100644
+--- a/src/core/ElementFormula.cpp
++++ b/src/core/ElementFormula.cpp
+@@ -55,6 +55,11 @@ void ElemFormula::calcMatrixInternal()
+         showError(&py);
+         return;
+     }
++    if (res->isEmpty()) {
++        py.errorLog << "Function calc_matrix returned no matrices";
++        showError(&py);
++        return;
++    }
+ 
+     const auto &matrixMap = res->first();
+     _matrs[MatrixKind::T] = matrixMap[RES_MT].value<Z::Matrix>();
+diff --git a/src/core/PyRunner.cpp b/src/core/PyRunner.cpp
+index ec46f52..a6f8add 100644
+--- a/src/core/PyRunner.cpp
++++ b/src/core/PyRunner.cpp
+@@ -102,6 +102,15 @@ PyRunner::PyRunner()
+ 
+ PyRunner::~PyRunner()
+ {
++    clearFunctions();
++
++    PyGlobal::schema = nullptr;
++    PyGlobal::printFunc = nullptr;
++}
++
++void PyRunner::clearFunctions()
++{
++    _funcRefs.clear();
+     for (int i = _refs.size()-1; i>= 0; i--)
+     {
+         const auto &r = _refs.at(i);
+@@ -110,9 +119,7 @@ PyRunner::~PyRunner()
+         else
+             Py_DECREF(r.ref);
+     }
+-
+-    PyGlobal::schema = nullptr;
+-    PyGlobal::printFunc = nullptr;
++    _refs.clear();
+ }
+ 
+ struct TmpRefs
+@@ -156,6 +163,10 @@ struct TmpRefs
+ bool PyRunner::load(const ModuleProps &props)
+ {
+     if (!errorLog.isEmpty()) return false;
++
++    clearFunctions();
++    codeTitle.clear();
++    errorLine = 0;
+     
+     if (moduleName.isEmpty()) {
+         handleError("Custom module name is not provided");
+@@ -171,22 +182,15 @@ bool PyRunner::load(const ModuleProps &props)
+     
+     TmpRefs refs("PyRunner::load");
+     
+-    auto pOldModule = PyImport_ImportModule(szModuleName);
+-    if (!pOldModule) {
+-        if (PyErr_ExceptionMatches(PyExc_ModuleNotFoundError)) {
+-            // This is expected, clean the exception
+-            refs << TmpRef{"ModuleNotFoundError", PyErr_GetRaisedException()};
+-        } else {
+-            handleError("Failed to find existing custom module");
+-            return false;
+-        }
+-    } else {
+-        refs << TMP_REF(pOldModule);
+-        // Python doesn't replace the whole module when reimports its code
+-        // It replaces only attributes that exist in the new code
+-        // If the new code doesn't contain docstring, the old doc is returned
+-        if (PyObject_SetAttrString(pOldModule, "__doc__", Py_None) < 0) {
+-            handleError("Failed to clean existing custom module");
++    // ExecCodeModule otherwise reuses the existing module dictionary, including
++    // callbacks removed from the edited code. Each load needs a fresh namespace;
++    // globals remain shared by all run() calls made after this load.
++    auto pModules = PyImport_GetModuleDict(); // borrowed reference
++    if (PyDict_DelItemString(pModules, szModuleName) < 0) {
++        if (PyErr_ExceptionMatches(PyExc_KeyError))
++            PyErr_Clear(); // This custom module has not been loaded before.
++        else {
++            handleError("Failed to reset custom module");
+             return false;
+         }
+     }
+diff --git a/src/core/PyRunner.h b/src/core/PyRunner.h
+index 2b49233..61fb314 100644
+--- a/src/core/PyRunner.h
++++ b/src/core/PyRunner.h
+@@ -58,7 +58,8 @@ public:
+         QHash<const char*, int> consts;
+     };
+ 
+-    /// Load custom code module
++    /// Load custom code into a fresh module namespace. Globals are shared by
++    /// run() calls after this load, but are not retained across separate loads.
+     bool load(const ModuleProps &props = {});
+     
+     /// Call a function defined in python code, e.g. `calculate`
+@@ -76,6 +77,7 @@ public:
+     bool hasFunction(const QString &name) const { return _funcRefs.contains(name); }
+ 
+ private:
++    void clearFunctions();
+     void handleError(const QString& msg, const QString &funcName = QString());
+     
+     QVector<TmpRef> _refs;
+diff --git a/src/tests/test_ElementFormula.cpp b/src/tests/test_ElementFormula.cpp
+index 16b64ae..1704893 100644
+--- a/src/tests/test_ElementFormula.cpp
++++ b/src/tests/test_ElementFormula.cpp
+@@ -1,4 +1,5 @@
+ #include "../core/ElementFormula.h"
++#include "../core/PyRunner.h"
+ #include "../tests/TestUtils.h"
+ 
+ #include "testing/OriTestBase.h"
+@@ -18,6 +19,17 @@ public:
+     }
+     Ori::Testing::TestBase *test;
+ };
++
++void initNonUnityMatrices(ElemFormula& elem)
++{
++    elem.setFormula(R"PY(
++from rezonator import Matrix
++
++def calc_matrix(elem):
++    return {'Mt': Matrix(2, 3, 4, 5), 'Ms': Matrix(6, 7, 8, 9)}
++)PY");
++    elem.calcMatrix("prepare error test");
++}
+ }
+ 
+ #define ASSERT_PARAM_DESTRUCTED(param_alias) \
+@@ -44,6 +56,17 @@ public:
+     elem.setFormula(code);\
+     elem.calcMatrix("test");
+ 
++#define INIT_NON_UNITY_MATRICES\
++    initNonUnityMatrices(elem);\
++    ASSERT_MATRIX(t, 2, 3, 4, 5)\
++    ASSERT_MATRIX(s, 6, 7, 8, 9)
++
++#define ASSERT_ALL_MATRICES_ARE_UNITY\
++    ASSERT_MATRIX_IS_UNITY(elem.Mt())\
++    ASSERT_MATRIX_IS_UNITY(elem.Ms())\
++    ASSERT_MATRIX_IS_UNITY(elem.Mt_inv())\
++    ASSERT_MATRIX_IS_UNITY(elem.Ms_inv())
++
+ #define ASSERT_ERROR(err) {}\
+     TEST_LOG(elem.failReason())\
+     ASSERT_IS_TRUE(elem.failed())\
+@@ -61,7 +84,19 @@ TEST_METHOD(can_calculate_matrix)
+     ADD_PARAM(c, 3)
+     ADD_PARAM(d, 4)
+ 
+-    CALC_TEST_MATRIX("At=a; Bt=b; Ct=c; Dt=d; As=10*a; Bs=10*b; Cs=10*c; Ds=10*d;")
++    CALC_TEST_MATRIX(R"PY(
++from rezonator import Matrix
++
++def calc_matrix(elem):
++    a = elem.param('a')
++    b = elem.param('b')
++    c = elem.param('c')
++    d = elem.param('d')
++    return {
++        'Mt': Matrix(a, b, c, d),
++        'Ms': Matrix(10*a, 10*b, 10*c, 10*d),
++    }
++)PY")
+ 
+     ASSERT_MATRIX(t, 1, 2, 3, 4)
+     ASSERT_MATRIX(s, 10, 20, 30, 40)
+@@ -70,39 +105,83 @@ TEST_METHOD(can_calculate_matrix)
+ TEST_METHOD(matrix_must_be_unity_when_empty_formula)
+ {
+     ElemFormula elem;
++    INIT_NON_UNITY_MATRICES
+     CALC_TEST_MATRIX("")
+-    ASSERT_ERROR("Formula is empty")
+-    ASSERT_MATRIX_IS_UNITY(elem.Mt())
+-    ASSERT_MATRIX_IS_UNITY(elem.Ms())
++    ASSERT_ERROR("Failed to get function calc_matrix")
++    ASSERT_IS_TRUE(elem.errorLog().join('\n').contains("has no attribute 'calc_matrix'"))
++    ASSERT_ALL_MATRICES_ARE_UNITY
++}
++
++TEST_METHOD(matrix_must_be_unity_when_callback_removed)
++{
++    ElemFormula elem;
++    INIT_NON_UNITY_MATRICES
++    CALC_TEST_MATRIX("from rezonator import Matrix\nvalue = 42\n")
++    ASSERT_ERROR("Failed to get function calc_matrix")
++    ASSERT_IS_TRUE(elem.errorLog().join('\n').contains("has no attribute 'calc_matrix'"))
++    ASSERT_ALL_MATRICES_ARE_UNITY
+ }
+ 
+ TEST_METHOD(matrix_must_be_unity_when_invalid_formula)
+ {
+     ElemFormula elem;
+-    CALC_TEST_MATRIX("A=1; B=2; C=3; D=unknown_func(4);")
+-    ASSERT_ERROR("Unknown function 'unknown_func'")
+-    ASSERT_MATRIX_IS_UNITY(elem.Mt())
+-    ASSERT_MATRIX_IS_UNITY(elem.Ms())
++    INIT_NON_UNITY_MATRICES
++    CALC_TEST_MATRIX(R"PY(
++from rezonator import Matrix
++
++def calc_matrix(elem):
++    return {'Mt': Matrix(1, 2, 3, unknown_func(4)), 'Ms': Matrix()}
++)PY")
++    ASSERT_ERROR("Failed to call function (function: calc_matrix)")
++    ASSERT_IS_TRUE(elem.errorLog().join('\n').contains("NameError: name 'unknown_func' is not defined"))
++    ASSERT_ALL_MATRICES_ARE_UNITY
+ }
+ 
+-TEST_CASE_METHOD(matrix_must_be_unity_when_no_abcd, bool hasTS, const char* missedName)
++TEST_CASE_METHOD(matrix_must_be_unity_when_no_abcd, const char* missedName)
+ {
+     ElemFormula elem;
+-    QString code("A=1; B=2; C=3; D=4; At=5; Bt=6; Ct=7; Dt=8; As=9; Bs=10; Cs=11; Ds=12;");
+-    code.replace(missedName, "dummy");
++    INIT_NON_UNITY_MATRICES
++    QString code(R"PY(
++from rezonator import Matrix
++
++def calc_matrix(elem):
++    At = 5
++    Bt = 6
++    Ct = 7
++    Dt = 8
++    As = 9
++    Bs = 10
++    Cs = 11
++    Ds = 12
++    return {'Mt': Matrix(At, Bt, Ct, Dt), 'Ms': Matrix(As, Bs, Cs, Ds)}
++)PY");
++    // Remove only the coefficient's definition, retaining its use in the matrix.
++    code.replace(QString("%1 =").arg(missedName), "dummy =");
+     CALC_TEST_MATRIX(code)
+-    ASSERT_ERROR(QString("Formula doesn't contain an expression for '%1' or it is not a number").arg(missedName))
+-    ASSERT_MATRIX_IS_UNITY(elem.Mt())
+-    ASSERT_MATRIX_IS_UNITY(elem.Ms())
++    ASSERT_ERROR("Failed to call function (function: calc_matrix)")
++    ASSERT_IS_TRUE(elem.errorLog().join('\n').contains(
++        QString("NameError: name '%1' is not defined").arg(missedName)))
++    ASSERT_ALL_MATRICES_ARE_UNITY
+ }
+-TEST_CASE(matrix_must_be_unity_when_no_at, matrix_must_be_unity_when_no_abcd, true, "At")
+-TEST_CASE(matrix_must_be_unity_when_no_bt, matrix_must_be_unity_when_no_abcd, true, "Bt")
+-TEST_CASE(matrix_must_be_unity_when_no_ct, matrix_must_be_unity_when_no_abcd, true, "Ct")
+-TEST_CASE(matrix_must_be_unity_when_no_dt, matrix_must_be_unity_when_no_abcd, true, "Dt")
+-TEST_CASE(matrix_must_be_unity_when_no_as, matrix_must_be_unity_when_no_abcd, true, "As")
+-TEST_CASE(matrix_must_be_unity_when_no_bs, matrix_must_be_unity_when_no_abcd, true, "Bs")
+-TEST_CASE(matrix_must_be_unity_when_no_cs, matrix_must_be_unity_when_no_abcd, true, "Cs")
+-TEST_CASE(matrix_must_be_unity_when_no_ds, matrix_must_be_unity_when_no_abcd, true, "Ds")
++TEST_CASE(matrix_must_be_unity_when_no_at, matrix_must_be_unity_when_no_abcd, "At")
++TEST_CASE(matrix_must_be_unity_when_no_bt, matrix_must_be_unity_when_no_abcd, "Bt")
++TEST_CASE(matrix_must_be_unity_when_no_ct, matrix_must_be_unity_when_no_abcd, "Ct")
++TEST_CASE(matrix_must_be_unity_when_no_dt, matrix_must_be_unity_when_no_abcd, "Dt")
++TEST_CASE(matrix_must_be_unity_when_no_as, matrix_must_be_unity_when_no_abcd, "As")
++TEST_CASE(matrix_must_be_unity_when_no_bs, matrix_must_be_unity_when_no_abcd, "Bs")
++TEST_CASE(matrix_must_be_unity_when_no_cs, matrix_must_be_unity_when_no_abcd, "Cs")
++TEST_CASE(matrix_must_be_unity_when_no_ds, matrix_must_be_unity_when_no_abcd, "Ds")
++
++TEST_CASE_METHOD(matrix_must_be_unity_when_no_result, const char* result)
++{
++    ElemFormula elem;
++    INIT_NON_UNITY_MATRICES
++    CALC_TEST_MATRIX(QString("def calc_matrix(elem):\n    return %1\n").arg(result))
++    ASSERT_ERROR("Function calc_matrix returned no matrices")
++    ASSERT_ALL_MATRICES_ARE_UNITY
++}
++TEST_CASE(matrix_must_be_unity_when_none_returned, matrix_must_be_unity_when_no_result, "None")
++TEST_CASE(matrix_must_be_unity_when_empty_list_returned, matrix_must_be_unity_when_no_result, "[]")
+ 
+ TEST_METHOD(params_in_formula_must_be_in_si_units)
+ {
+@@ -110,8 +189,44 @@ TEST_METHOD(params_in_formula_must_be_in_si_units)
+     auto p = new Z::Parameter(Z::Dims::linear(), "a");
+     p->setValue(10_cm);
+     elem.addParam(p);
+-    CALC_TEST_MATRIX("At=a; Bt=a; Ct=a; Dt=a; As=a; Bs=a; Cs=a; Ds=a")
++    CALC_TEST_MATRIX(R"PY(
++from rezonator import Matrix
++
++def calc_matrix(elem):
++    a = elem.param('a')
++    return {'Mt': Matrix(a, a, a, a), 'Ms': Matrix(a, a, a, a)}
++)PY")
+     ASSERT_MATRIX(t, 0.1, 0.1, 0.1, 0.1)
++    ASSERT_MATRIX(s, 0.1, 0.1, 0.1, 0.1)
++}
++
++TEST_METHOD(python_state_persists_between_calls_and_resets_on_reload)
++{
++    PyRunner py;
++    py.moduleName = "test_element_formula_state";
++    py.funcNames = { "next_value" };
++    py.code = R"PY(
++counter = 0
++
++def next_value():
++    global counter
++    counter += 1
++    return {'value': counter}
++)PY";
++    ASSERT_IS_TRUE(py.load())
++    const PyRunner::ResultSpec spec {{ "value", PyRunner::ftNumber }};
++    for (double expected : {1.0, 2.0}) {
++        auto result = py.run("next_value", {}, spec);
++        ASSERT_IS_TRUE(result.has_value())
++        ASSERT_EQ_INT(result->size(), 1)
++        ASSERT_EQ_DBL(result->first()["value"].toDouble(), expected)
++    }
++
++    ASSERT_IS_TRUE(py.load())
++    auto result = py.run("next_value", {}, spec);
++    ASSERT_IS_TRUE(result.has_value())
++    ASSERT_EQ_INT(result->size(), 1)
++    ASSERT_EQ_DBL(result->first()["value"].toDouble(), 1.0)
+ }
+ 
+ //------------------------------------------------------------------------------
+@@ -119,6 +234,7 @@ TEST_METHOD(params_in_formula_must_be_in_si_units)
+ TEST_GROUP("ElementFormula",
+            ADD_TEST(can_calculate_matrix),
+            ADD_TEST(matrix_must_be_unity_when_empty_formula),
++           ADD_TEST(matrix_must_be_unity_when_callback_removed),
+            ADD_TEST(matrix_must_be_unity_when_invalid_formula),
+            ADD_TEST(matrix_must_be_unity_when_no_at),
+            ADD_TEST(matrix_must_be_unity_when_no_bt),
+@@ -128,7 +244,10 @@ TEST_GROUP("ElementFormula",
+            ADD_TEST(matrix_must_be_unity_when_no_bs),
+            ADD_TEST(matrix_must_be_unity_when_no_cs),
+            ADD_TEST(matrix_must_be_unity_when_no_ds),
++           ADD_TEST(matrix_must_be_unity_when_none_returned),
++           ADD_TEST(matrix_must_be_unity_when_empty_list_returned),
+            ADD_TEST(params_in_formula_must_be_in_si_units),
++           ADD_TEST(python_state_persists_between_calls_and_resets_on_reload),
+            )
+ 
+ } // namespace ElementFormulaTests
+diff --git a/src/tests/test_PlotFunctions.cpp b/src/tests/test_PlotFunctions.cpp
+index 2915787..b0727f4 100644
+--- a/src/tests/test_PlotFunctions.cpp
++++ b/src/tests/test_PlotFunctions.cpp
+@@ -431,6 +431,7 @@ namespace Caustic {
+ #define TEST_CAUSTIC_FUNC(tripType, mode) \
+     TEST_SCHEMA(tripType) \
+     CausticFunction func(s.schema); \
++    func.setPump(s.schema->activePump()); \
+     func.setMode(mode); \
+     func.arg()->element = s.elem_L_foc; \
+     func.arg()->range.start = 0_m; \
+@@ -682,6 +683,7 @@ namespace MultirangeCaustic {
+     v2.range.step = 0_m; \
+     v2.range.points = 10; \
+     func.setArgs({v1, v2}); \
++    func.setPump(s.schema->activePump()); \
+     func.setMode(mode); \
+     func.calculate(); \
+     ASSERT_FUNC_OK

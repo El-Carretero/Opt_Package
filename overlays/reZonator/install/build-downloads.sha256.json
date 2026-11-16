@@ -1,0 +1,52 @@
+[
+  {
+    "name": "d3dcompiler_47-x64.7z",
+    "sha256": "CC3700734B9849040E676CAA431A9D34AF63489CFC4A7CA3CE655DC7CCBCE494",
+    "url": "https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_693/qt6_693/qt.qt6.693.win64_mingw/6.9.3-0-202509261208d3dcompiler_47-x64.7z"
+  },
+  {
+    "name": "lua-5.4.8.tar.gz",
+    "sha256": "4F18DDAE154E793E46EEAB727C59EF1C0C0C2B744E7B94219710D76F530629AE",
+    "url": "https://www.lua.org/ftp/lua-5.4.8.tar.gz"
+  },
+  {
+    "name": "MinGW-w64-x86_64-13.1.0-release-posix-seh-msvcrt-rt_v11-rev1-runtime.7z",
+    "sha256": "2C30E78C580955B703B6969F0B4D562CBECFD426D250F7014D4B7866A4FEC3F7",
+    "url": "https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_693/qt6_693/qt.qt6.693.win64_mingw/6.9.3-0-202509261208MinGW-w64-x86_64-13.1.0-release-posix-seh-msvcrt-rt_v11-rev1-runtime.7z"
+  },
+  {
+    "name": "mingw1310.7z",
+    "sha256": "A7B502294A903B64FCCD4A41BA39F48D3F6C9A5ECE167F0CFAEAC920D15B344F",
+    "url": "https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/tools_mingw1310/qt.tools.win64_mingw1310/13.1.0-202407240918mingw1310.7z"
+  },
+  {
+    "name": "opengl32sw-64-mesa_11_2_2-signed_sha256.7z",
+    "sha256": "DDC52E1D765B01C65CADDEC36D3C4156B33EC27ACEFCC070B6D1235BFF7F986F",
+    "url": "https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_693/qt6_693/qt.qt6.693.win64_mingw/6.9.3-0-202509261208opengl32sw-64-mesa_11_2_2-signed_sha256.7z"
+  },
+  {
+    "name": "python.3.12.10.nupkg",
+    "sha256": "0EB85C2DFCCCCF1B17352DE4C397F69194035B7D37149EACC16F1147D93DE3B8",
+    "url": "https://api.nuget.org/v3-flatcontainer/python/3.12.10/python.3.12.10.nupkg"
+  },
+  {
+    "name": "qtbase-Windows-Windows_10_22H2-Mingw-Windows-Windows_10_22H2-X86_64.7z",
+    "sha256": "8D14F37C4D3C0DE96F8BCE27E084CFA5ECAEF37036032B1DD72831AE14DA8660",
+    "url": "https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_693/qt6_693/qt.qt6.693.win64_mingw/6.9.3-0-202509261208qtbase-Windows-Windows_10_22H2-Mingw-Windows-Windows_10_22H2-X86_64.7z"
+  },
+  {
+    "name": "qtsvg-Windows-Windows_10_22H2-Mingw-Windows-Windows_10_22H2-X86_64.7z",
+    "sha256": "1F225FBF559462BCAA2CDBA3096546D870E0E574BE0F4D740F76CF536BD07985",
+    "url": "https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_693/qt6_693/qt.qt6.693.win64_mingw/6.9.3-0-202509261208qtsvg-Windows-Windows_10_22H2-Mingw-Windows-Windows_10_22H2-X86_64.7z"
+  },
+  {
+    "name": "qttools-Windows-Windows_10_22H2-Mingw-Windows-Windows_10_22H2-X86_64.7z",
+    "sha256": "974BAE98EA60A89188E53FF6F4E53C21F012580CD06AA7CD8378E38AF0AC83BC",
+    "url": "https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_693/qt6_693/qt.qt6.693.win64_mingw/6.9.3-0-202509261208qttools-Windows-Windows_10_22H2-Mingw-Windows-Windows_10_22H2-X86_64.7z"
+  },
+  {
+    "name": "qttranslations-Windows-Windows_10_22H2-Mingw-Windows-Windows_10_22H2-X86_64.7z",
+    "sha256": "EAB538F0A0485C9BAF4750186F39E4DE14BF26AB7B9D59FDD700DE544E751006",
+    "url": "https://download.qt.io/online/qtsdkrepository/windows_x86/desktop/qt6_693/qt6_693/qt.qt6.693.win64_mingw/6.9.3-0-202509261208qttranslations-Windows-Windows_10_22H2-Mingw-Windows-Windows_10_22H2-X86_64.7z"
+  }
+]

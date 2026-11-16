@@ -1,0 +1,13 @@
+{
+  "name": "RayOptics",
+  "repo": "mjhoptics/ray-optics",
+  "package": "rayoptics",
+  "version": "0.9.10",
+  "mode": "source",
+  "extras": "",
+  "advantages": "기하광학 모델, 근축 계산, 실제 광선 추적, 수차와 GUI를 제공한다.",
+  "limits": "파동광학 전파와 레이저 능동매질 동역학은 별도 계산이 필요하다.",
+  "uses": "렌즈·릴레이·집속 광학의 기하 설계와 수차 검토.",
+  "python": "3.12.12",
+  "source_commit": "c9bf54dc2129c908dbbe4c5a8bf511473ef499f4"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "pyLaserPulse",
+  "commit": "9397befa6e04f92c111ad7a5ee7e4efe502dc128",
+  "version": "0.1.0",
+  "python": "3.11.15",
+  "editable": true
+}

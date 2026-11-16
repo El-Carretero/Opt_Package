@@ -1,0 +1,171 @@
+{
+  "builtin_params": {
+    "lambda": {
+      "unit": "nm",
+      "value": 632.8
+    }
+  },
+  "custom_params": {},
+  "elements": [
+    {
+      "is_disabled": false,
+      "label": "M1",
+      "layout_draw_alt": false,
+      "layout_show_label": true,
+      "params": {
+        "Alpha": {
+          "error": "",
+          "expr": "",
+          "unit": "deg",
+          "value": 0
+        },
+        "R": {
+          "error": "",
+          "expr": "",
+          "unit": "mm",
+          "value": 200
+        }
+      },
+      "title": "Left concave mirror",
+      "type": "ElemCurveMirror"
+    },
+    {
+      "is_disabled": false,
+      "label": "L",
+      "layout_draw_alt": false,
+      "layout_show_label": true,
+      "params": {
+        "L": {
+          "error": "",
+          "expr": "",
+          "unit": "mm",
+          "value": 100
+        },
+        "n": {
+          "error": "",
+          "expr": "",
+          "unit": "none",
+          "value": 1
+        }
+      },
+      "title": "Air / vacuum gap",
+      "type": "ElemEmptyRange"
+    },
+    {
+      "is_disabled": false,
+      "label": "M2",
+      "layout_draw_alt": false,
+      "layout_show_label": true,
+      "params": {
+        "Alpha": {
+          "error": "",
+          "expr": "",
+          "unit": "deg",
+          "value": 0
+        },
+        "R": {
+          "error": "",
+          "expr": "",
+          "unit": "mm",
+          "value": 200
+        }
+      },
+      "title": "Right concave mirror",
+      "type": "ElemCurveMirror"
+    }
+  ],
+  "formulas": [],
+  "notes": "Basic Gaussian optics: symmetric cavity, L=100 mm, R1=R2=200 mm, lambda=632.8 nm. See learning_examples/README.md.",
+  "param_links": [],
+  "pumps": [],
+  "schema_version": "2.1",
+  "title": "01 - Symmetric spherical-mirror cavity",
+  "trip_type": "SW",
+  "windows": [
+    {
+      "type": "Caustic",
+      "function": {
+        "arg": {
+          "element_index": 1,
+          "param": "L",
+          "range": {
+            "points": 101,
+            "start": {
+              "unit": "mm",
+              "value": 0
+            },
+            "step": {
+              "unit": "mm",
+              "value": 1
+            },
+            "stop": {
+              "unit": "mm",
+              "value": 100
+            },
+            "use_step": false
+          }
+        },
+        "mode": "BeamRadius"
+      },
+      "window": {
+        "cursor_enabled": true,
+        "cursor_mode": "Both",
+        "stored_views": {},
+        "t_title": "",
+        "ts_flipped": false,
+        "ts_mode": "T+S",
+        "x_min": 0,
+        "x_max": 100,
+        "x_unit": "mm",
+        "x_title": "Position from M1 {(unit)}",
+        "y_min": 0.12,
+        "y_max": 0.16,
+        "y_unit": "mm",
+        "y_title": "Beam radius w {(unit)}"
+      }
+    },
+    {
+      "type": "StabMap",
+      "function": {
+        "arg": {
+          "element_index": 1,
+          "param": "L",
+          "range": {
+            "points": 451,
+            "start": {
+              "unit": "mm",
+              "value": 0
+            },
+            "step": {
+              "unit": "mm",
+              "value": 1
+            },
+            "stop": {
+              "unit": "mm",
+              "value": 450
+            },
+            "use_step": false
+          }
+        },
+        "stab_calc_mode": "Normal"
+      },
+      "window": {
+        "cursor_enabled": true,
+        "cursor_mode": "Both",
+        "stored_views": {},
+        "t_title": "",
+        "ts_flipped": false,
+        "ts_mode": "T+S",
+        "x_min": 0,
+        "x_max": 450,
+        "x_unit": "mm",
+        "x_title": "L {(unit)}",
+        "y_min": -1.1,
+        "y_max": 2.3,
+        "y_unit": "none",
+        "y_title": "(A+D)/2",
+        "stab_bound_markers": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "PyNLO",
+  "commit": "9a1a9ec9c3cccd858543ac984ac8895285d286c0",
+  "version": "0.1.2",
+  "python": "3.10.20",
+  "editable": true
+}

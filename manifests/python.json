@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Optiland",
+    "repo": "optiland/optiland",
+    "commit": "bb487f9b56baaf82eaa563750ff351a5ce90d63d",
+    "version": "0.6.3+local",
+    "platform": "windows",
+    "installer": "install/install.ps1",
+    "sourceSha256": "a01d0b57f5e43310952bc9d0b7b2eebc32baf8a410a47b9627615931472246d4",
+    "overlay": "overlays/Optiland"
+  },
+  {
+    "name": "RayOptics",
+    "repo": "mjhoptics/ray-optics",
+    "commit": "c9bf54dc2129c908dbbe4c5a8bf511473ef499f4",
+    "version": "0.9.10",
+    "platform": "windows",
+    "installer": "install/install.ps1",
+    "sourceSha256": "fd326c1fe7cf9abf4ea41b200ac32578902791376f174b7c354b7702fef9740b",
+    "overlay": "overlays/RayOptics"
+  },
+  {
+    "name": "LightPipes",
+    "repo": "opticspy/lightpipes",
+    "commit": "cd965c9469bb53bbae2bf185d38c1107408cd5b5",
+    "version": "2.1.5",
+    "platform": "windows",
+    "installer": "install/install.ps1",
+    "sourceSha256": "1ee3311c9ee5f8bf4750182bf03f5e1313817499a570682a9a63e0810b719f03",
+    "overlay": "overlays/LightPipes"
+  },
+  {
+    "name": "Diffractio",
+    "repo": "optbrea/diffractio",
+    "commit": "75feb35691f6bdd3b85077e5f1f216fb4ccb85bd",
+    "version": "1.0.0",
+    "platform": "windows",
+    "installer": "install/install.ps1",
+    "sourceSha256": "3c1ab7df87512f49796ea4dfbeb217b073c8522c6fdee8939b122a5e312eb19a",
+    "overlay": "overlays/Diffractio"
+  },
+  {
+    "name": "TorchOptics",
+    "repo": "MatthewFilipovich/torchoptics",
+    "commit": "34fe9c40f874e53db225e703c5580befe8c523b5",
+    "version": "1.0.2",
+    "platform": "windows",
+    "installer": "install/install.ps1",
+    "sourceSha256": "6f1adeafcc28839faf8cc1bd5325a6b74eae8b3e4c322992059ca1b2e6b48da0",
+    "overlay": "overlays/TorchOptics"
+  },
+  {
+    "name": "pychi",
+    "repo": "pychi-code/pychi",
+    "commit": "c91c97a4f387156f5c47dcd1fd4c0093dae4c498",
+    "version": "0.0.22",
+    "platform": "windows",
+    "installer": "install/install.ps1",
+    "sourceSha256": "86c24f8596cba834db79288f1516736e9289303d12205f51ad4def7bd00aa823",
+    "overlay": "overlays/pychi"
+  }
+]

@@ -1,0 +1,528 @@
+Orion \ Math \ learn_nan
+Orion \ Math \ learn_infinity
+Orion \ Math \ division_by_zero
+Orion \ Math \ invalid_sqrt
+Orion \ Templates \ singleton
+Orion \ Templates \ notifier_no_params
+Orion \ Templates \ notifier_with_params
+Orion \ Templates \ declare_enum
+Orion \ Templates \ breakable_block
+Orion \ Templates \ nested_breakable_block
+Orion \ Version \ constructor_int
+Orion \ Version \ constructor_str
+Orion \ Version \ constructor_str_invalid
+Orion \ Version \ more_and_less
+Orion \ Version \ operators
+Orion \ Version \ isValid
+Orion \ Version \ str
+Orion \ Filter \ destructor_must_delete_all_conditions
+Orion \ Filter \ check_must_call_all_conditions
+Orion \ Filter \ check_must_return_false_when_one_condition_failed
+Orion \ Filter \ count_must_return_number_of_items_in_container
+Orion \ Filter \ count_must_return_zero_when_no_conditions_satisfied
+Orion \ Filter \ filter_must_return_part_of_container
+Orion \ Filter \ filter_must_return_empty_container_when_no_conditions_satisfied
+TestUtils \ Helper_makeElem
+Report \ warning
+Report \ error
+Units \ none_toSi
+Units \ none_fromSi
+Units \ linear_toSi
+Units \ linear_fromSi
+Units \ algular_toSi
+Units \ algular_fromSi
+Units \ fixed_toSi
+Units \ fixed_fromSi
+Units \ linear_unitByAlias
+Units \ angular_unitByAlias
+Units \ none_unitByAlias
+Units \ fixed_unitByAlias
+Units \ simplify
+Units \ prefix_name_tr
+Units \ guessDim
+Units \ findByAlias
+Unit Widgets \ UnitComboBox \ must_contain_all_units
+Unit Widgets \ UnitComboBox \ must_disable_unit_none
+Unit Widgets \ UnitComboBox \ must_disable_unit_fixed
+Unit Widgets \ UnitComboBox \ must_enable_unit_fixed_when_required
+Unit Widgets \ DimComboBox \ must_contain_all_dims
+Unit Widgets \ DimComboBox \ must_select_dim
+Unit Widgets \ UnitsMenu \ must_contain_all_units_linear
+Unit Widgets \ UnitsMenu \ must_contain_all_units_angular
+Unit Widgets \ UnitsMenu \ must_contain_no_units_none
+Unit Widgets \ UnitsMenu \ must_contain_no_units_fixed
+Math \ Matrix_constructors
+Math \ Matrix_assign
+Math \ Matrix_unity
+Math \ Matrix_multiply
+Math \ Matrix_multiply_static
+Math \ Matrix_multComplexBeam
+Math \ RayVector_constructors
+Math \ RayVector_set
+Values \ Value_ctor_value_unit
+Values \ Value_ctor_copy
+Values \ Value_ctor_from_numbers
+Values \ Value_parse
+Values \ Value_toSi
+Values \ Value_literals_int
+Values \ Value_literals_double
+Values \ Value_equality
+Values \ Value_compare
+Values \ ValueTS_constructors
+Values \ ValueTS_assign
+Parameters \ Parameter_ctor_default
+Parameters \ Parameter_ctor_params
+Parameters \ Parameter_setValue_getValue
+Parameters \ Parameter_setValue_resets_expr
+Parameters \ Parameter_setValue_resets_error
+Parameters \ Parameter_verify
+Parameters \ ParameterListener_parameterChanged
+Parameters \ ParameterListener_parameterFailed
+Parameters \ ParameterListener_parameterFailed_no_event_when_reset_error
+Parameters \ Parameters_byAlias
+Parameters \ Parameters_byIndex
+Parameters \ Parameters_byPointer
+Parameters \ ParameterLink_constructor_destructor
+Parameters \ ParameterLink_apply_si_when_dim_mismatch
+Parameters \ ParameterLink_apply_error_when_source_failed
+Parameters \ ParameterLink_apply_error_when_verification_failed
+Parameters \ ParameterFilter \ ParameterFilterVisible_check
+ParamEditor \ ctor__must_register_listener
+ParamEditor \ destructor__must_unregister_listener_when_no_own
+ParamEditor \ destructor__must_delete_param_when_own
+ParamsEditor \ ctor__must_register_listeners
+ParamsEditor \ destructor__must_unregister_listeners_when_no_own
+ParamsEditor \ destructor__must_delete_params_when_own
+Element \ Element_ctor_generates_id
+Element \ Element_must_add_param_in_ctor
+Element \ Element_must_listen_its_params
+Element \ Element_hasParams
+Element \ Element_unlock_does_not_calculates_matrix
+Element \ Element_unlock_does_not_raise_events
+Element \ Element_setDisabled_must_set_flag
+Element \ Element_setDisabled_must_raise_event
+Element \ Element_setTitle_must_assign_value
+Element \ Element_setTitle_must_raise_event
+Element \ Element_setLabel_must_assign_value
+Element \ Element_setLabel_must_raise_event
+Element \ ElementOwner_setParam_must_recalculate_matrix
+Element \ ElementOwner_setParam_must_recalculate_matrix_when_locked
+Element \ ElementOwner_setParam_must_raise_event
+Element \ Element_addParam__must_insert_at_index
+Element \ Element_addParam__must_listen_new_param
+Element \ Element_addParam__must_do_nothing_if_already_added
+Element \ Element_removeParam__must_unlisten
+Element \ Element_removeParam__must_destruct
+Element \ Element_removeParam__does_nothing_if_not_added
+Element \ Element_moveParamUp
+Element \ Element_moveParamDown
+Element \ ElementKind__Simple
+Element \ ElementKind__Range
+Element \ ElementKind__RangeImpl
+Element \ ElementKind__Dynamic
+Element \ ElementKind__DynamicImpl
+Element \ ElementKind__Interface
+Element \ ElementKind__InterfaceImpl
+ElementEventsLocker \ schema_modified_when_not_locked
+ElementEventsLocker \ schema_not_modified_when_locked
+ElementEventsLocker \ schema_modified_when_link_added_and_not_locked
+ElementEventsLocker \ schema_not_modified_when_link_added_and_locked
+ElementEventsLocker \ schema_modified_when_linked_parameter_changed_and_not_locked
+ElementEventsLocker \ schema_not_modified_when_linked_parameter_changed_and_locked
+ElementEventsLocker \ schema_modified_when_formula_parameter_changed_and_not_locked
+ElementEventsLocker \ schema_not_modified_when_formula_parameter_changed_and_locked
+Elements \ EmptyRange
+Elements \ MediumRange
+Elements \ Plate
+Elements \ FlatMirror
+Elements \ CurveMirror
+Elements \ ThinLens
+Elements \ CylinderLensT
+Elements \ CylinderLensS
+Elements \ TiltedCrystal
+Elements \ TiltedPlate
+Elements \ BrewsterCrystal
+Elements \ BrewsterPlate
+Elements \ Matrix_1
+Elements \ Matrix_2
+Elements \ Matrix1_1
+Elements \ Matrix1_2
+Elements \ Point
+Elements \ GrinLens
+Elements \ GrinMedium
+Elements \ ThermoLens
+Elements \ ThermoMedium
+Elements \ GaussAperture
+Elements \ GaussApertureLens
+Elements \ GaussDuctMedium
+Elements \ GaussDuctSlab
+Elements \ ThickLens
+Elements \ ThickLens_flat1
+Elements \ ThickLens_flat2
+Elements \ ThickLens_flat1_flat2
+Elements \ ThickLens_flip
+Elements \ NormalInterface
+Elements \ BrewsterInterface
+Elements \ TiltedInterface
+Elements \ SphericalInterface
+Elements \ SphericalInterface_flat
+Elements \ SphericalInterface_flip
+Elements \ AxiconMirror
+Elements \ AxiconLens
+ElementFormula \ can_calculate_matrix
+ElementFormula \ matrix_must_be_unity_when_empty_formula
+ElementFormula \ matrix_must_be_unity_when_invalid_formula
+ElementFormula \ matrix_must_be_unity_when_no_at
+ElementFormula \ matrix_must_be_unity_when_no_bt
+ElementFormula \ matrix_must_be_unity_when_no_ct
+ElementFormula \ matrix_must_be_unity_when_no_dt
+ElementFormula \ matrix_must_be_unity_when_no_as
+ElementFormula \ matrix_must_be_unity_when_no_bs
+ElementFormula \ matrix_must_be_unity_when_no_cs
+ElementFormula \ matrix_must_be_unity_when_no_ds
+ElementFormula \ params_in_formula_must_be_in_si_units
+Element Filter \ ElementFilterEnabled_check
+Element Filter \ ElementFilterHasParams_check
+Element Filter \ ElementFilterHasVisibleParams_check
+Element Filter \ ElementFilterIsRange_check
+Elements Images \ resource_icons
+Elements Images \ resource_outlines
+Elements Images \ layouts
+Schema \ constructor
+Schema \ destructor__must_delete_elements
+Schema \ destructor__must_delete_custom_params
+Schema \ destructor__must_delete_pumps
+Schema \ destructor__must_delete_formulas
+Schema \ destructor__must_raise_event
+Schema \ destructor__can_do_without_events
+Schema \ generateLabel__first_elem
+Schema \ generateLabel__next_elem
+Schema \ raise_all_events
+Schema \ set_wavelength__must_raise_event
+Schema \ Element_RequiresWavelength__must_be_respected
+Schema \ activeCount
+Schema \ activeElements
+Schema \ elementById
+Schema \ elementByLabel
+Schema \ insertElements__must_increase_count
+Schema \ insertElements__must_assign_element_owner
+Schema \ insertElements__must_raise_events_and_change_state
+Schema \ insertElements__must_not_raise_events_when_they_disabled_by_param
+Schema \ insertElements__must_raise_events_for_all_elems
+Schema \ deleteElements__must_not_fail_when_invalid_elem
+Schema \ deleteElements__must_remove_element_from_schema
+Schema \ deleteElements__must_reset_element_owner
+Schema \ deleteElements__must_free_element
+Schema \ deleteElements__must_not_free_element_when_not_required
+Schema \ deleteElements__must_raise_events
+Schema \ deleteElements__must_not_raise_events_when_they_disabled_by_param
+Schema \ deleteElements__must_not_raise_events_when_they_disabled_in_schema
+Schema \ ElementInterface__must_be_linked_to_neighbours
+Schema \ ElementInterface__must_be_unlinked_after_deletion_of_itself
+Schema \ ElementInterface__must_be_unlinked_after_deletion_of_neighbour
+Schema \ activePump
+SchemaReaderIni \ file_not_exists
+SchemaReaderIni \ read_invalid_section
+SchemaReaderIni \ read_invalid_version_too_new
+SchemaReaderIni \ read_invalid_version_too_old
+SchemaReaderIni \ read_invalid_lambda
+SchemaReaderIni \ read_invalid_elem_type
+SchemaReaderIni \ read_invalid_elem_section
+SchemaReaderIni \ read_invalid_elem_param
+SchemaReaderIni \ read_general
+SchemaReaderIni \ read_schema_1_1
+SchemaReaderIni \ read_schema_1_2
+SchemaReaderIni \ read_pump_waist
+SchemaReaderIni \ read_pump_front
+SchemaReaderIni \ read_pump_ray_vector
+SchemaReaderIni \ read_pump_two_sections
+SchemaReaderIni \ read_pump_complex
+SchemaReaderIni \ read_pump_inv_complex
+SchemaReaderJson \ read_pumps
+SchemaReaderJson \ read_pumps_Waist
+SchemaReaderJson \ read_pumps_Front
+SchemaReaderJson \ read_pumps_RayVector
+SchemaReaderJson \ read_pumps_TwoSections
+SchemaReaderJson \ read_pumps_Complex
+SchemaReaderJson \ read_pumps_InvComplex
+SchemaReaderJson \ convert_lens_roc_inf
+SchemaReaderJson \ convert_lens_roc_sign
+SchemaReaderJson \ convert_intf_roc_sign
+RoundTripCalculator \ Elements in round-trip \ rt_sw_elems
+RoundTripCalculator \ Elements in round-trip \ rt_sw_elems_beg
+RoundTripCalculator \ Elements in round-trip \ rt_sw_elems_end
+RoundTripCalculator \ Elements in round-trip \ rt_sp_elems
+RoundTripCalculator \ Elements in round-trip \ rt_sp_elems_beg
+RoundTripCalculator \ Elements in round-trip \ rt_sp_elems_end
+RoundTripCalculator \ Elements in round-trip \ rt_rr_elems
+RoundTripCalculator \ Elements in round-trip \ rt_rr_elems_beg
+RoundTripCalculator \ Elements in round-trip \ rt_rr_elems_end
+RoundTripCalculator \ Elements in round-trip \ must_be_empty_when_null_ref
+RoundTripCalculator \ Elements in round-trip \ must_be_empty_when_invalid_ref
+RoundTripCalculator \ Elements in round-trip \ must_be_empty_when_disabled_ref
+RoundTripCalculator \ Elements in round-trip \ disabled_elems_must_be_skipped
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_sw_matrs_norange_nopslit
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_sw_matrs_norange_nopslit_beg
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_sw_matrs_norange_nopslit_end
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_sw_matrs_norange_split
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_sw_matrs_norange_split_beg
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_sw_matrs_norange_split_end
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_sw_matrs_range_nosplit
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_sw_matrs_range_nosplit_beg
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_sw_matrs_range_nosplit_end
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_sp_matrs_norange_nopslit
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_sp_matrs_norange_nopslit_beg
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_sp_matrs_norange_nopslit_end
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_sp_matrs_norange_split
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_sp_matrs_norange_split_beg
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_sp_matrs_norange_split_end
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_sp_matrs_range_nosplit
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_sp_matrs_range_nosplit_beg
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_sp_matrs_range_nosplit_end
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_rr_matrs_norange_nopslit
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_rr_matrs_norange_nopslit_beg
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_rr_matrs_norange_nopslit_end
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_rr_matrs_norange_split
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_rr_matrs_norange_split_beg
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_rr_matrs_norange_split_end
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_rr_matrs_range_nosplit
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_rr_matrs_range_nosplit_beg
+RoundTripCalculator \ Round-trip end matrices (no range, no-split) \ rt_rr_matrs_range_nosplit_end
+RoundTripCalculator \ Round-trip end matrices (range split) \ rt_sw_matrs
+RoundTripCalculator \ Round-trip end matrices (range split) \ rt_sw_matrs_beg
+RoundTripCalculator \ Round-trip end matrices (range split) \ rt_sw_matrs_end
+RoundTripCalculator \ Round-trip end matrices (range split) \ rt_sp_matrs
+RoundTripCalculator \ Round-trip end matrices (range split) \ rt_sp_matrs_beg
+RoundTripCalculator \ Round-trip end matrices (range split) \ rt_sp_matrs_end
+RoundTripCalculator \ Round-trip end matrices (range split) \ rt_rr_matrs
+RoundTripCalculator \ Round-trip end matrices (range split) \ rt_rr_matrs_beg
+RoundTripCalculator \ Round-trip end matrices (range split) \ rt_rr_matrs_end
+RoundTripCalculator \ General functionality \ multMatrix
+RoundTripCalculator \ General functionality \ stability_stable
+RoundTripCalculator \ General functionality \ stability_unstable_S
+RoundTripCalculator \ General functionality \ stability_unstable_T
+RoundTripCalculator \ General functionality \ stability_unstable
+RoundTripCalculator \ Composite interfaced elements \ Normal \ rt_ifaces_normal_sw_0
+RoundTripCalculator \ Composite interfaced elements \ Normal \ rt_ifaces_normal_sw_1
+RoundTripCalculator \ Composite interfaced elements \ Normal \ rt_ifaces_normal_sw_2
+RoundTripCalculator \ Composite interfaced elements \ Normal \ rt_ifaces_normal_rr_0
+RoundTripCalculator \ Composite interfaced elements \ Normal \ rt_ifaces_normal_rr_1
+RoundTripCalculator \ Composite interfaced elements \ Normal \ rt_ifaces_normal_rr_2
+RoundTripCalculator \ Composite interfaced elements \ Normal \ rt_ifaces_normal_sp_0
+RoundTripCalculator \ Composite interfaced elements \ Normal \ rt_ifaces_normal_sp_1
+RoundTripCalculator \ Composite interfaced elements \ Normal \ rt_ifaces_normal_sp_2
+RoundTripCalculator \ Composite interfaced elements \ Brewster \ rt_ifaces_brewster_sw_0
+RoundTripCalculator \ Composite interfaced elements \ Brewster \ rt_ifaces_brewster_sw_1
+RoundTripCalculator \ Composite interfaced elements \ Brewster \ rt_ifaces_brewster_sw_2
+RoundTripCalculator \ Composite interfaced elements \ Brewster \ rt_ifaces_brewster_rr_0
+RoundTripCalculator \ Composite interfaced elements \ Brewster \ rt_ifaces_brewster_rr_1
+RoundTripCalculator \ Composite interfaced elements \ Brewster \ rt_ifaces_brewster_rr_2
+RoundTripCalculator \ Composite interfaced elements \ Brewster \ rt_ifaces_brewster_sp_0
+RoundTripCalculator \ Composite interfaced elements \ Brewster \ rt_ifaces_brewster_sp_1
+RoundTripCalculator \ Composite interfaced elements \ Brewster \ rt_ifaces_brewster_sp_2
+RoundTripCalculator \ Composite interfaced elements \ Tilted \ rt_ifaces_tilted_sw_0
+RoundTripCalculator \ Composite interfaced elements \ Tilted \ rt_ifaces_tilted_sw_1
+RoundTripCalculator \ Composite interfaced elements \ Tilted \ rt_ifaces_tilted_sw_2
+RoundTripCalculator \ Composite interfaced elements \ Tilted \ rt_ifaces_tilted_rr_0
+RoundTripCalculator \ Composite interfaced elements \ Tilted \ rt_ifaces_tilted_rr_1
+RoundTripCalculator \ Composite interfaced elements \ Tilted \ rt_ifaces_tilted_rr_2
+RoundTripCalculator \ Composite interfaced elements \ Tilted \ rt_ifaces_tilted_sp_0
+RoundTripCalculator \ Composite interfaced elements \ Tilted \ rt_ifaces_tilted_sp_1
+RoundTripCalculator \ Composite interfaced elements \ Tilted \ rt_ifaces_tilted_sp_2
+RoundTripCalculator \ Composite interfaced elements \ Spherical \ rt_ifaces_spherical_sw_0
+RoundTripCalculator \ Composite interfaced elements \ Spherical \ rt_ifaces_spherical_sw_1
+RoundTripCalculator \ Composite interfaced elements \ Spherical \ rt_ifaces_spherical_sw_2
+RoundTripCalculator \ Composite interfaced elements \ Spherical \ rt_ifaces_spherical_rr_0
+RoundTripCalculator \ Composite interfaced elements \ Spherical \ rt_ifaces_spherical_rr_1
+RoundTripCalculator \ Composite interfaced elements \ Spherical \ rt_ifaces_spherical_rr_2
+RoundTripCalculator \ Composite interfaced elements \ Spherical \ rt_ifaces_spherical_sp_0
+RoundTripCalculator \ Composite interfaced elements \ Spherical \ rt_ifaces_spherical_sp_1
+RoundTripCalculator \ Composite interfaced elements \ Spherical \ rt_ifaces_spherical_sp_2
+GaussCalculator \ change_W0
+GaussCalculator \ change_Z0_far
+GaussCalculator \ change_Z0_near
+GaussCalculator \ change_Vs
+GaussCalculator \ change_Z
+GaussCalculator \ change_MI
+GaussCalculator \ change_W
+GaussCalculator \ change_R
+GaussCalculator \ change_Q
+GaussCalculator \ change_Q1_re
+GaussCalculator \ change_Q1_im
+GaussCalculator \ change_Lambda
+GrinCalculator \ calc_focus
+GrinCalculator \ solve_n2
+PumpCalculator \ Waist_gauss
+PumpCalculator \ Waist_hyper
+PumpCalculator \ Front_gauss
+PumpCalculator \ Front_hyper
+PumpCalculator \ RayVector
+PumpCalculator \ TwoSections
+PumpCalculator \ Complex_gauss
+PumpCalculator \ Complex_hyper
+PumpCalculator \ InvComplex_gauss
+PumpCalculator \ InvComplex_hyper
+AbcdCalculator \ real_beamRadius__must_return_nan_when_unstable
+AbcdCalculator \ real_beamRadius
+AbcdCalculator \ real_frontRadius__can_return_inf
+AbcdCalculator \ real_frontRadius
+AbcdCalculator \ real_halfAngle__must_return_nan_when_unstable
+AbcdCalculator \ real_halfAngle
+AbcdCalculator \ real_calc_ts
+BeamCalculator \ todo
+Function Utils \ prevElem
+Function Utils \ nextElem
+Function Utils \ ior
+Information functions \ InfoFuncRepetitionRate_RR_must_be_twice_of_SW
+Information functions \ InfoFuncRepetitionRate_must_account_optical_path
+Plot functions \ StabilityMapFunction \ calculate_normal
+Plot functions \ StabilityMapFunction \ calculate_squared
+Plot functions \ StabilityMapFunction \ calculateAt
+Plot functions \ StabilityMapFunction \ calculate_with_global_param
+Plot functions \ StabilityMapFunction \ calculate_with_global_param_formula
+Plot functions \ StabilityMap2DFunction \ calculate_normal
+Plot functions \ StabilityMap2DFunction \ calculate_squared
+Plot functions \ StabilityMap2DFunction \ calculateAt
+Plot functions \ StabilityMap2DFunction \ calculate_with_global_param
+Plot functions \ StabilityMap2DFunction \ calculate_with_global_param_formula
+Plot functions \ CausticFunction \ calculate_resonator_W
+Plot functions \ CausticFunction \ calculate_resonator_R
+Plot functions \ CausticFunction \ calculateAt_resonator_W
+Plot functions \ CausticFunction \ calculateAt_resonator_R
+Plot functions \ CausticFunction \ calculate_SP_W
+Plot functions \ CausticFunction \ calculate_SP_R
+Plot functions \ CausticFunction \ calculateAt_SP_W
+Plot functions \ CausticFunction \ calculateAt_SP_R
+Plot functions \ BeamVariationFunction \ calculate_resonator
+Plot functions \ BeamVariationFunction \ calculateAt_resonator
+Plot functions \ BeamVariationFunction \ calculate_SP
+Plot functions \ BeamVariationFunction \ calculateAt_SP
+Plot functions \ BeamVariationFunction \ calculateAt_offset_positive_small
+Plot functions \ BeamVariationFunction \ calculateAts_offset_positive_large
+Plot functions \ BeamVariationFunction \ calculateAt_offset_negative_small
+Plot functions \ BeamVariationFunction \ calculateAt_offset_negative_large
+Plot functions \ BeamVariationFunction \ calculateAt_offset_positive_percent
+Plot functions \ BeamVariationFunction \ calculateAt_offset_negative_percent
+Plot functions \ MultirangeCausticFunction \ calculate_resonator_W
+Plot functions \ MultirangeCausticFunction \ calculateAt_resonator_W
+Plot functions \ MultirangeCausticFunction \ calculateAt_resonator_R
+Plot functions \ MultirangeCausticFunction \ calculate_SP_W
+Plot functions \ MultirangeCausticFunction \ calculate_SP_R
+Plot functions \ MultirangeCausticFunction \ calculateAt_SP_W
+Plot functions \ MultirangeCausticFunction \ calculateAt_SP_R
+Table function \ BeamParamsAtElemsFunction \ interfaces_sw
+Table function \ BeamParamsAtElemsFunction \ interfaces_sp
+Table function \ BeamParamsAtElemsFunction \ interfaces_rr
+Table function \ BeamParamsAtElemsFunction \ must_respect_medium_ior__sw__curved_ends__simple
+Table function \ BeamParamsAtElemsFunction \ must_respect_medium_ior__sw__curved_ends__grin
+Table function \ BeamParamsAtElemsFunction \ must_respect_medium_ior__sw__curved_ends__thermo
+Table function \ BeamParamsAtElemsFunction \ must_respect_medium_ior__sw__curved_left_flat_right
+Table function \ BeamParamsAtElemsFunction \ must_respect_medium_ior__sw__curved_right_flat_left
+Table function \ BeamParamsAtElemsFunction \ must_respect_medium_ior__sw__flat_in_middle
+Table function \ BeamParamsAtElemsFunction \ must_respect_medium_ior__sw__lens_in_middle
+Table function \ BeamParamsAtElemsFunction \ must_respect_medium_ior__sp__flat_in_middle
+Table function \ BeamParamsAtElemsFunction \ must_respect_medium_ior__sp__lens_in_middle
+Table function \ BeamParamsAtElemsFunction \ must_respect_medium_ior__rr__flat_in_middle
+Table function \ BeamParamsAtElemsFunction \ must_respect_medium_ior__rr__lens_in_middle
+Table function \ BeamParamsAtElemsFunction \ complare_between_elems__sw
+Table function \ BeamParamsAtElemsFunction \ complare_between_elems__sp
+Table function \ BeamParamsAtElemsFunction \ complare_between_elems__rr_1
+Table function \ BeamParamsAtElemsFunction \ complare_between_elems__rr_2
+Table function \ BeamParamsAtElemsFunction \ complare_between_elems__1_1
+Table function \ BeamParamsAtElemsFunction \ complare_between_elems__1_2
+Table function \ BeamParamsAtElemsFunction \ complare_between_elems__1_3
+Table function \ BeamParamsAtElemsFunction \ complare_between_elems__2_1
+Table function \ BeamParamsAtElemsFunction \ complare_between_elems__2_2
+Table function \ BeamParamsAtElemsFunction \ complare_between_elems__3_1
+Table function \ BeamParamsAtElemsFunction \ complare_between_elems__3_2
+Element Selector Widgets \ ElemSelectorWidget \ constructor::appends_all_elements_when_no_filter
+Element Selector Widgets \ ElemSelectorWidget \ constructor::must_use_filter
+Element Selector Widgets \ ElemSelectorWidget \ constructor::must_use_filter_for_custom_params
+Element Selector Widgets \ ElemSelectorWidget \ constructor::must_respect_filter
+Element Selector Widgets \ ElemSelectorWidget \ constructor::must_respect_filter_for_custom_params
+Element Selector Widgets \ ElemSelectorWidget \ must_initially_select_the_first
+Element Selector Widgets \ ElemSelectorWidget \ can_set_selected_elem_and_current_index
+Element Selector Widgets \ ParamSelectorWidget \ populate::appends_all_elements_when_no_filter
+Element Selector Widgets \ ParamSelectorWidget \ populate::must_use_filter
+Element Selector Widgets \ ParamSelectorWidget \ populate::must_respect_filter
+Element Selector Widgets \ ParamSelectorWidget \ must_select_the_first_when_populated
+Element Selector Widgets \ ParamSelectorWidget \ can_set_selected_param_and_current_index
+Element Selector Widgets \ ParamSelectorWidget \ repopulate::with_null
+Element Selector Widgets \ ParamSelectorWidget \ repopulate::with_elem_having_no_params
+Element Selector Widgets \ ElemAndParamSelector \ must_initially_select_the_first
+Element Selector Widgets \ ElemAndParamSelector \ must_populate_params_when_selected_element_changes
+PumpWindow \ createPump__first_pump_must_be_active
+PumpWindow \ createPump__must_raise_event
+PumpWindow \ editPump__must_do_nothing_when_dialog_canceled
+PumpWindow \ editPump__must_raise_events
+PumpWindow \ editPump__must_recalc_SP_schema_when_pump_is_active
+PumpWindow \ editPump__must_not_recalc_non_SP_schema
+PumpWindow \ deletePump__must_not_delete_the_only_pump_from_SP_schema
+PumpWindow \ deletePump__can_delete_the_only_pump_from_non_SP_schema
+PumpWindow \ deletePump__must_do_nothing_when_not_confirmed
+PumpWindow \ deletePump__must_activate_the_first_pump_when_active_pump_was_deleted
+PumpWindow \ activatePump__must_do_nothing_when_pump_is_already_active
+PumpWindow \ activatePump__must_deactivate_previous_active_pump
+PumpWindow \ activatePump__must_not_recalc_non_SP_schema
+LuaHelper \ global_funcs
+LuaHelper \ can_be_several_parser_instances
+LuaHelper \ different_instances_use_differenet_globals
+LuaHelper \ can_set_one_global_before_code
+LuaHelper \ can_set_one_global_after_code
+LuaHelper \ can_set_several_globals_before_code
+LuaHelper \ can_set_several_globals_after_code
+LuaHelper \ can_reuse_globals_with_different_code
+LuaHelper \ can_calc_several_values
+LuaHelper \ can_remove_global
+LuaHelper \ can_show_refined_error_messages
+ProjectOperations \ createDefaultPump__must_add_active_pump
+ProjectOperations \ createDefaultPump__must_raise_events
+ProjectOperations \ createDefaultPump__must_generate_label_when_required
+ProjectOperations \ createDefaultPump__can_skip_label_generation
+ProjectOperations \ createDefaultSchema__must_assign_trip_type_SW
+ProjectOperations \ createDefaultSchema__must_assign_trip_type_RR
+ProjectOperations \ createDefaultSchema__must_assign_trip_type_SP
+ProjectOperations \ createDefaultSchema__must_create_pump_for_SP_schema
+ProjectOperations \ setupPump__must_do_nothing_for_SW_schema
+ProjectOperations \ setupPump__must_do_nothing_for_RR_schema
+ProjectOperations \ setupPump__must_do_nothing_when_no_active_pump
+ProjectOperations \ setupPump__must_do_nothing_when_dialog_canceled
+ProjectOperations \ setupPump__must_raise_events
+ProjectOperations \ setupPump__must_create_pump_when_no_pumps
+ProjectOperations \ setupTripType__must_do_nothing_when_dialog_canceled
+ProjectOperations \ setupTripType__must_do_nothing_when_trip_type_the_same
+ProjectOperations \ setupTripType__must_raise_events
+ProjectOperations \ setupTripType__must_create_active_pump_for_SP_schema
+Formula \ isValidVariableName
+Formula \ calculate
+Formula \ calculate_with_deps
+Formula \ destructor_must_unlisten_deps
+Formula \ calculate_with_units
+Formula \ calculate_sets_error_when_empty
+Formula \ calculate_sets_error_when_bad_code
+Formula \ calculate_sets_error_when_dep_failed
+Formula \ renameDep_none
+Formula \ renameDep_beg
+Formula \ renameDep_mid
+Formula \ renameDep_end
+Formula \ renameDep_several
+Formula \ renameDep_func
+Formula \ findDeps_keep_old
+Formula \ findDeps_keep_non_existent
+Formula \ findDeps_remove_one
+Formula \ findDeps_remove_all
+Formula \ findDeps_add_one
+Formula \ findDeps_add_several
+Formula \ findDeps_replace_one
+Formula \ findDeps_replace_several
+Formula \ findDeps_ignore_self
+Formula \ findDeps_ignore_circular
+Formula \ Formulas_dependentParams
+Formula \ Formulas_dependentParams_only_first_level
+Formula \ Formulas_dependsOn
+Utils \ generateLabel
+Adjuster \ must_raise_events_when_elem_param_chenged
+Adjuster \ must_raise_events_when_custom_param_changed_1
+Adjuster \ must_raise_events_when_custom_param_changed_2
+Adjuster \ must_be_disabled_when_param_is_linked_to_custom
+Adjuster \ must_be_disabled_when_custom_param_is_driven_by_formula

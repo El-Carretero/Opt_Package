@@ -1,0 +1,22 @@
+{
+  "target": "Windows x86_64 native GUI and complete embedded test suite",
+  "qt": "6.9.3 win64_mingw",
+  "compiler": "MinGW-w64 GCC13.1.0 posix-seh msvcrt rt_v11 rev1",
+  "python_sdk_and_embedded_runtime": "CPython3.12.10 official python NuGet package",
+  "lua": "5.4.8 compiled as static library",
+  "cmake": "3.31.10",
+  "ninja": "1.13.2",
+  "aqtinstall": "3.3.0",
+  "python_build_environment": ".build-venv (local virtual environment from toolchain/python-sdk)",
+  "dependency_lock": "install/build-requirements.lock.txt",
+  "download_checksums": "install/build-downloads.sha256.json",
+  "build_command": "install/build.bat",
+  "configure_only": "install/build.bat -ConfigureOnly",
+  "staged_runtime": "build-output/runtime",
+  "original_runtime_policy": "build.ps1 stages output separately and does not overwrite runtime",
+  "sources": [
+    "https://download.qt.io/",
+    "https://api.nuget.org/v3-flatcontainer/python/3.12.10/python.3.12.10.nupkg",
+    "https://www.lua.org/ftp/lua-5.4.8.tar.gz"
+  ]
+}

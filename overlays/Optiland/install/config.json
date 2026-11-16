@@ -1,0 +1,14 @@
+{
+  "name": "Optiland",
+  "repo": "optiland/optiland",
+  "package": "optiland",
+  "version": "0.6.3+local",
+  "mode": "source",
+  "extras": "gui",
+  "advantages": "실광선 추적, 수차·PSF/MTF 분석, 광학계 최적화, 공차 분석과 GUI를 함께 제공한다.",
+  "limits": "레이저 반전분포·포화이득·모드잠금 펄스 형성은 별도 모델이 필요하다. 이 환경은 GUI와 NumPy CPU 백엔드를 설치했으며 선택 기능인 PyTorch GPU 백엔드는 포함하지 않는다.",
+  "uses": "스트레처·컴프레서·릴레이·집속 광학의 초기 설계 및 최적화.",
+  "python": "3.12.12",
+  "source_commit": "bb487f9b56baaf82eaa563750ff351a5ce90d63d",
+  "source_version": "0.6.3"
+}

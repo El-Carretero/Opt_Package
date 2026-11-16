@@ -1,0 +1,16 @@
+[
+  {
+    "name": "custom-plot-lab-60f24590.zip",
+    "url": "https://codeload.github.com/orion-project/custom-plot-lab/zip/60f24590ed481a6515ab07f47d97b522d5f9404b",
+    "sha256": "da879fce65bd17bd7188801f231b1a01dd6dc21f088fa0f0ac6fab32a6e4a07a",
+    "bytes": 465585,
+    "destination": "libs/custom-plot-lab"
+  },
+  {
+    "name": "orion-qt-7dd992de.zip",
+    "url": "https://codeload.github.com/orion-project/orion-qt/zip/7dd992de2b28509b1d34ff6293a8f7213e6ca8cb",
+    "sha256": "e4448c2abbb6eb2dd626bd62a1350cf43dbea7f317a8f142beb23922c05cce1a",
+    "bytes": 2999271,
+    "destination": "libs/orion"
+  }
+]
